@@ -1,17 +1,14 @@
 import React, { useState } from "react";
 import { useChatContext } from "stream-chat-react";
+
 import { UserList } from "./";
 import { CloseCreateChannel } from "../assets";
 
 const ChannelNameInput = ({ channelName = "", setChannelName }) => {
-  const { client, setActiveChannel } = useChatContext();
+  const handleChange = (event) => {
+    event.preventDefault();
 
-  const [selectedUsers, setSelectedUsers] = useState([client.userID || ""]);
-
-  const handleChange = (e) => {
-    e.preventDefault();
-
-    setChannelName(e.target.value);
+    setChannelName(event.target.value);
   };
 
   return (
@@ -45,7 +42,7 @@ const CreateChannel = ({ createType, setIsCreating }) => {
 
       setChannelName("");
       setIsCreating(false);
-      setSelectedUsers([client.userID])
+      setSelectedUsers([client.userID]);
       setActiveChannel(newChannel);
     } catch (error) {
       console.log(error);
