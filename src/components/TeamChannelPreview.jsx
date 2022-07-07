@@ -7,7 +7,7 @@ const TeamChannelPreview = ({
   setToggleContainer,
   channel,
   type,
-  setActiveChannel
+  setActiveChannel,
 }) => {
   const { channel: activeChannel, client } = useChatContext();
 
@@ -45,9 +45,8 @@ const TeamChannelPreview = ({
         setIsCreating(false);
         setIsEditing(false);
         setActiveChannel(channel);
-
-        if(setToggleContainer) {
-          setToggleContainer((prevState) => !prevState)
+        if (setToggleContainer) {
+          setToggleContainer((prevState) => !prevState);
         }
       }}
     >
